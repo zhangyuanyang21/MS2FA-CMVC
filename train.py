@@ -107,7 +107,7 @@ for i in range(T):
     while epoch <= args.mse_epochs + args.con_epochs:
         loss_= contrastive_train(epoch)
         if epoch == args.mse_epochs + args.con_epochs:
-            acc, nmi, pur, _, _, _, _ = valid(model, device, dataset, view, data_size, class_num, eval_h=True)
+            acc, nmi, pur = valid(model, device, dataset, view, data_size, class_num, eval_h=True)
             print('---------train over---------')
             print('{:.4f} {:.4f} {:.4f}'.format(acc, nmi, pur))
             state = model.state_dict()
