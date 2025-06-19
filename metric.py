@@ -78,12 +78,5 @@ def valid(model, device, dataset, view, data_size, class_num, eval_h=False):
         )
     labels_vector, catZ, commonZ, commonq_total_pred = inference(test_loader, model, device, view, data_size)
     if eval_h:
-        # print("Clustering results on commom_high-level features :")
-        # kmeans = KMeans(n_clusters=class_num, n_init=100)
-        # y_pred = kmeans.fit_predict(commonZ)
-        # nmi, ari, acc, pur = evaluate(labels_vector, y_pred)
-        # print('ACC = {:.4f} NMI = {:.4f} PUR={:.4f} ARI = {:.4f}'.format(acc, nmi, pur, ari))
         nmi2, ari2, acc2, pur2 = evaluate(labels_vector, commonq_total_pred)
-        # print("Clustering results on commom_semantic labels: ")
-        print('ACC = {:.4f} NMI = {:.4f} ARI = {:.4f} PUR={:.4f}'.format(acc2, nmi2, ari2, pur2))
-    return acc2, nmi2, pur2, ari2, labels_vector, catZ, commonZ
+    return acc2, nmi2, pur2
