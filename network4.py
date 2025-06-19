@@ -87,7 +87,7 @@ class Network(nn.Module):
             qs.append(q)
         return  xrs, zs, hs, qs
 
-    def GCFAgg(self, xs):
+    def MS2FA(self, xs):
         zs = []
         for v in range(self.view):
             x = xs[v]
