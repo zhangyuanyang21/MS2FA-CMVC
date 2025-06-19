@@ -27,7 +27,6 @@ parser.add_argument("--mse_epochs", default=200)
 parser.add_argument("--con_epochs", default=50)
 parser.add_argument("--feature_dim", default=512)
 parser.add_argument("--high_feature_dim", default=128)
-# parser.add_argument("--num_neighbors", default=3)
 args = parser.parse_args()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -65,9 +64,7 @@ def pretrain(epoch):
         loss_list = []
         for v in range(view):
             loss_list.append(criterion(xs[v], xrs[v]))
-            # loss_list.append(math.log(1+criterion(xs[v], xrs[v])/2**2)/view)
         loss = sum(loss_list)
-        # loss = torch.tensor(loss, requires_grad=True)  # 将标量转换为张量，并允许计算梯度
         loss.backward()
         optimizer.step()
         tot_loss += loss.item()
