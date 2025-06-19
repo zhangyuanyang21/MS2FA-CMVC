@@ -71,7 +71,6 @@ class Loss(nn.Module):
         return loss
 
     def forward_label(self, q_i, q_j):
-        #此处的entropy = ne_i + ne_j存在问题需要在思考一下
         p_i = q_i.sum(0).view(-1)
         p_i /= p_i.sum()
         ne_i = math.log(p_i.size(0)) + (p_i * torch.log(p_i)).sum()
