@@ -60,8 +60,6 @@ class Network(nn.Module):
         )
         self.class_num = class_num
         self.view = view
-        # self.trans_enc = nn.TransformerEncoderLayer(d_model=feature_dim*view, nhead=1, dim_feedforward=256)
-        # self.extract_layers = nn.TransformerEncoder(self.trans_enc, num_layers=1)
         # add share_space
         self.mk1 = torch.nn.Linear(feature_dim*view, 64, bias=False)
         self.mv1 = torch.nn.Linear(64, feature_dim*view, bias=False)
